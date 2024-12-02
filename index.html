@@ -1,0 +1,194 @@
+<html>
+<head>
+<title>Basic_Calculator</title>
+<style>
+  /* Overall body styling */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Center the calculator container */
+  .calculator-container {
+    width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+
+  /* Styling for the title */
+  h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  /* Styling for inputs */
+  input[type="textbox"], input[type="text"], select {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 18px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+  }
+
+  input[type="button"], input[type="submit"], input[type="reset"] {
+    width: 40%;
+    padding: 10px;
+    font-size: 18px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+  }
+
+  /* Button hover effect */
+  input[type="button"]:hover, input[type="submit"]:hover, input[type="reset"]:hover {
+    background-color: #45a049;
+  }
+
+  /* Result input box styling */
+  #result {
+    width: 80%;
+    padding: 10px;
+    font-size: 18px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #f0f0f0;
+    margin: 20px 0;
+  }
+
+  /* Marquee styling */
+  marquee {
+    color: #555;
+    font-style: italic;
+    font-size: 16px;
+  }
+
+  /* Footer styling */
+  hr {
+    border: 1px solid #ccc;
+  }
+
+  /* Extra margin between buttons */
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* Stylish copyright section */
+  .copyright {
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    font-style: italic;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  
+  /* Hover effect for copyright */
+  .copyright:hover {
+    background-color: #4CAF50;
+    cursor: pointer;
+  }
+</style>
+<script>
+  function calculate() {
+    // Get the values from the input fields
+    var num1 = parseFloat(document.getElementById('n1').value);
+    var num2 = parseFloat(document.getElementById('n2').value);
+    var operation = document.getElementById('op').value;
+    var result;
+
+    // Validate inputs
+    if (isNaN(num1) || isNaN(num2)) {
+      alert('Please enter valid numbers!');
+      return;
+    }
+
+    // Perform the operation based on the selection
+    if (operation === 'add') {
+      result = num1 + num2;
+    } else if (operation === 'sub') {
+      result = num1 - num2;
+    } else if (operation === 'mul') {
+      result = num1 * num2;
+    } else if (operation === 'div') {
+      if (num2 === 0) {
+        alert('Division by zero is not allowed!');
+        return;
+      }
+      result = num1 / num2;
+    }
+
+    // Display the result
+    document.getElementById('result').value = result;
+  }
+
+  function reset() {
+    document.getElementById('n1').value = '';
+    document.getElementById('n2').value = '';
+    document.getElementById('result').value = '';
+  }
+</script>
+</head>
+<body>
+
+<!-- Calculator container -->
+<div class="calculator-container">
+  <h1>Basic Calculator</h1>
+
+  <!-- Input fields for numbers -->
+  <h2>Enter the Number 1:</h2>
+  <input type="textbox" id="n1">
+
+  <h2>Enter the Number 2:</h2>
+  <input type="textbox" id="n2">
+
+  <h2><b>Select the Operation Method:</b></h2>
+  <select name="Operations" id="op">
+    <option value="add">Addition</option>
+    <option value="sub">Subtraction</option>
+    <option value="mul">Multiplication</option>
+    <option value="div">Division</option>
+  </select>
+
+  <!-- Buttons to trigger actions -->
+  <div class="button-container">
+    <input type="button" value="Calculate" onclick="calculate()">
+    <input type="button" value="Reset" onclick="reset()">
+  </div>
+  
+  <hr>
+  
+  <!-- Display result -->
+  <h2><b>The Result is:</b></h2>
+  <input type="text" id="result" readonly="true">
+  
+  <hr>
+  
+  <!-- Thank you message with marquee -->
+  <marquee>Thank you for using my web application</marquee>
+</div>
+
+<!-- Stylish Copyright Footer -->
+<div class="copyright">
+  &copy; 2024 7-SRIRAM-S. All Rights Reserved.
+</div>
+
+</body>
+</html>
